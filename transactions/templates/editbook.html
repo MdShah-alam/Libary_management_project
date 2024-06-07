@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="section-content padding-y">
+
+<!-- ============================ COMPONENT REGISTER   ================================= -->
+	<div class="card mx-auto" style="max-width:520px; margin-top:40px;">
+      <article class="card-body">
+    {% include 'includes/alerts.html' %}
+		<header class="mb-4"><h4 class="card-title">Book Store</h4></header>
+		<form action="{% url 'transactions:bookstore' %}" method="POST">
+      {% csrf_token %}
+
+
+				<div class="form-row">
+					<div class="col form-group">
+						<label>enter category of book</label>
+					  	{{ form.category }}
+					</div> <!-- form-group end.// -->
+					<div class="form-group col-md-6">
+                        <label>number of book</label>
+                        {{form.amount}}
+                      </div> <!-- form-group end.// -->
+				</div> <!-- form-row end.// -->
+
+				<div class="form-row">
+					<div class="form-group col-md-6">
+					  <label>book name</label>
+					  {{form.book_name}}
+					</div> <!-- form-group end.// -->
+                    <div class="form-group col-md-6">
+						<label>writter of book</label>
+					    {{ form.author }}
+					</div> <!-- form-group end.// -->
+				</div> <!-- form-row.// -->
+			    <div class="form-group">
+			        <button type="submit" class="btn btn-primary btn-block"> submit </button>
+			    </div> <!-- form-group// -->
+      {{ form.isbn.errors }}
+      {{ form.non_field_errors }}
+			</form>
+		</article><!-- card-body.// -->
+    </div> <!-- card .// -->
+  <br>
+<!-- ============================ COMPONENT REGISTER  END.// ================================= -->
+
+</section>
+
+{% endblock %}

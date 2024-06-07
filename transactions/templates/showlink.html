@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div style='width:50%; margin:auto'>
+    <table class="table table-bordered table-dark">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Category</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for dt in data %}
+          <tr>
+            <td>{{dt.id}}</td>
+            <td><a href="{% url 'transactions:bookshow' dt.id %}">{{dt.category}}</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+</div>
+
+{% endblock content %}
